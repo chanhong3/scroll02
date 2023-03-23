@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지움직임</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 1000px;
+            background-color: rgb(218, 168, 7);
+        }
+        img {
+            width: 0%;
+            transition: all 0.5s;
+        }
+        div{
+            text-align: center;
+        }
+        #top {
+            position: fixed;
+            padding: 10px;
+            bottom: 50px;
+            right: 50px;
+            background-color: rgb(218, 168, 7);
+            border-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="img/iu.jpg" id="image">
+    </div>
+    <button id  ="top">IU</button>
+
+    <!--제이쿼리 꼭 있어야함-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        /*이미지 스크롤에 따라 사이즈 변함*/
+        window.addEventListener("scroll", function(){
+            if (window.scrollY > 50) { /*50은 내가 지정해주는 값*/
+                document.getElementById("image").style.width = "100%"; /*50만큼 스크롤 다운 > 이미지가 100%로 보임 / 50이전엔 변하지 않음*/
+            } else {
+                document.getElementById("image").style.width = "0%"; /*스크롤 업 > 이미지가 0%로 안보임*/
+            }
+
+        });
+
+        /*위로 올라가는 버튼*/
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+        var button = document.getElementById('top')
+        button.addEventListener('click',scrollToTop)
+    </script>
+</body>
+</html>
